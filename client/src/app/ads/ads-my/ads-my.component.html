@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row space-top">
+    <div class="col-md-12">
+      <p></p>
+      <h1>My Ads</h1>
+      <p></p>
+    </div>
+  </div>
+  <div class="row space-top">
+    <div class="col-md-4" *ngFor="let ad of ads$ | async">
+    <div *ngIf="!ads$"><h2>No ads</h2></div>
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <blockquote class="card-blockquote">
+            <img src="{{ ad.image }}" />
+            <p></p>
+            <p>{{ ad.title }}</p>
+            <p>{{ ad.description }}</p>
+            <footer>
+              Looking for
+              <cite title="Source Title">this</cite>
+              ?
+            </footer>
+            <div class="pull-right">
+              <a [routerLink]="['/ads/details', ad._id]" class="btn btn-info"
+                >Details</a
+              >
+              <a [routerLink]="['/ads/delete', ad._id]" class="btn btn-danger"
+                >Delete Item</a
+              >
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

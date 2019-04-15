@@ -1,2 +1,2 @@
 # AngularProject
-SoftUni Angular Project
+SoftUni Ads SPA

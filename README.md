@@ -15,18 +15,7 @@ AngularProject uses a number of open source projects to work:
 * [JSONWebToken](https://jwt.io) - Used for authorization
 * [Angular](https://angular.io) - Platform that makes it easy to build applications with the web
 
-The goal of this project is to show the core concepts of building SPA with ExpressJS and Angular. In this project I've used:
-
-* Wrapped each major feature into a module
-* Lazy-loading for most of the modules so the app can start faster
-* Preload lazy-loaded modules after the app starts so they can be ready for use as soon as possible
-* Services for each major feature
-* Guards to prevent unauthorized users to view routes that require authentication or admin rights
-* Interceptors for attaching JWT token to the request headers, showing notifications from the server response and error handling
-* Custom directives
-* Custom pipes
-* TypeScript models
-* Reactive forms for handling user input
+The goal of this project is to show the core concepts of building SPA with ExpressJS and Angular. 
 
 ### Installation
 

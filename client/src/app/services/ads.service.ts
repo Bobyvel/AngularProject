@@ -6,6 +6,9 @@ import { Ads } from '../models/ads';
 const createPath = 'http://localhost:5000/ads/create';
 const allPath = 'http://localhost:5000/ads/all';
 const myAdsPath = 'http://localhost:5000/ads/mine';
+const detailsPath = 'http://localhost:5000/ads/details/';
+const delPath = 'http://localhost:5000/ads/delete/';
+const editPath = 'http://localhost:5000/ads/edit/';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +28,18 @@ export class AdsService {
 
   getMyAds(): Observable<Ads[]>{
     return this.http.get<Ads[]>(myAdsPath)
+  }
+
+  getDetails(id): Observable<Ads>{
+    return this.http.get<Ads>(detailsPath + id)
+  }
+
+  removeAd(id){
+    console.log(id)
+    return this.http.delete(delPath + id)
+  }
+
+  editAds(id, data){
+    return this.http.put(editPath + id, data)
   }
 }

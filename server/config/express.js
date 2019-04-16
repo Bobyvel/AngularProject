@@ -5,6 +5,7 @@ const localSignupStrategy = require('../passport/local-signup')
 const localLoginStrategy = require('../passport/local-login')
 const authRoutes = require('../routes/auth')
 const AdsRoutes = require('../routes/ads')
+const UsersRoutes = require('../routes/users')
 const statsRoutes = require('../routes/stats')
 
 module.exports = app => {
@@ -23,5 +24,6 @@ module.exports = app => {
   // routes
   app.use('/auth', authRoutes)
   app.use('/ads', AdsRoutes)
+  app.use('/users', UsersRoutes)
   app.use('/stats', statsRoutes)
 }

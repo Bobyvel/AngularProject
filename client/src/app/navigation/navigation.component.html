@@ -16,6 +16,9 @@
       <li *ngIf="authService.isAuthenticated()" class="nav-item">
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>
+      <li *ngIf="authService.isAdmin()" class="nav-item">
+          <a class="nav-link" routerLink="/users">Users</a>
+        </li>
       <li *ngIf="authService.isAuthenticated()" appNavDropdown class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">ADS</a>
@@ -27,7 +30,7 @@
       </li>
     </ul>
   </div>
-  <h1 class="navbar-brand" *ngIf="authService.isAuthenticated()">
-    Hello, {{username}}!
+  <h1 class="navbar-brand" *ngIf="authService.isAuthenticated() && user">
+    Hello, {{user}}!
   </h1>
 </nav>

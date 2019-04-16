@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input} from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthService } from "../authentication/auth.service";
 
@@ -8,16 +8,22 @@ import { AuthService } from "../authentication/auth.service";
   styleUrls: ["./navigation.component.css"]
 })
 export class NavigationComponent implements OnInit {
-  username: string;
+  
   constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit() {
-    this.username = localStorage.getItem("name");
+    
   }
+  @Input() username: string;
+  
 
   logout() {
     this.authService.logout();
     localStorage.clear();
     this.router.navigate(["/signin"]);
+  }
+
+  get user(){
+    return localStorage.getItem('name')
   }
 }

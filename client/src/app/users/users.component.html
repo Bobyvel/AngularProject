@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row space-top">
+      <div class="col-md-12" >
+        <h1>Users Details</h1>
+      </div>
+    </div>
+    <div class="row space-top">
+     <div class="col-md-4" *ngFor="let user of users$ | async">
+        <div class="card text-white bg-primary">
+            <div class="card-body">
+        <p>Username: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p *ngFor="let role of user.roles">Roles: {{ role }}</p>
+        <p>User ads counter: </p>
+        <div class="pull-right">
+            <span *ngIf="authService.isAdmin()"><a (click)="deleteAd(user.id)" class="btn btn-danger"
+              >Delete User</a
+            ></span>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

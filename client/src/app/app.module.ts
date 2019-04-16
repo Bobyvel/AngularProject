@@ -18,6 +18,10 @@ import { AuthService } from './authentication/auth.service';
 import { JwtInterseptorService } from './interseptors/jwt-interseptor.service';
 import { AdsMyComponent } from './ads/ads-my/ads-my.component';
 import { AdsCreateComponent } from './ads/ads-create/ads-create.component';
+import { AdsDetailsComponent } from './ads/ads-details/ads-details.component';
+import { ResHadlerInterseptorService } from './interseptors/res-hadler-interseptor.service';
+import { AdsEditComponent } from './ads/ads-edit/ads-edit.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,9 @@ import { AdsCreateComponent } from './ads/ads-create/ads-create.component';
     CollapseDirective,
     AdsMyComponent,
     AdsCreateComponent,
+    AdsDetailsComponent,
+    AdsEditComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,8 @@ import { AdsCreateComponent } from './ads/ads-create/ads-create.component';
   ],
   providers: [ 
     AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterseptorService, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterseptorService, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ResHadlerInterseptorService, multi: true}
   ],
   bootstrap: [AppComponent]
 })

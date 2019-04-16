@@ -14,14 +14,17 @@
                           <img src="{{ad.image}}" />
                           <p></p>
                           <p>{{ad.title}}</p>
-                          <p>{{ad.description}}</p>
+                          <p>{{ad.description | slice:0:20}}</p>
                           <footer>Looking for
                               <cite title="Source Title">this</cite>
                               ?
                           </footer>
                           <div class="pull-right">
                               <a [routerLink]="['/ads/details', ad._id ]" class="btn btn-info">Details</a>
-                          </div>
+                              <span *ngIf="authService.isAdmin()"><a (click)="deleteAd(ad._id)" class="btn btn-danger"
+                                >Delete Item</a
+                              ></span>
+                            </div>
                       </blockquote>
                   </div>
               </div>

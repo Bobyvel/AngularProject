@@ -1,0 +1,37 @@
+<p></p>
+<div class="container">
+  <div class="row space-top">
+      <div class="col-md-12">
+          <h1>Find your item here! </h1>
+          <p>Direct contact with the seller</p>
+      </div>
+      
+      <div  class="col-md-12"><app-search [adsSearch$]="ads$"></app-search>
+        <p></p></div>
+  </div>
+      <div class="row space-top">
+          <div class="col-md-4" *ngFor="let ad of ads$ | async">
+              <div class="card text-white bg-primary">
+                  <div class="card-body">
+                      <blockquote class="card-blockquote">
+                          <img src="{{ad.image}}" />
+                          <p></p>
+                          <p>{{ad.title}}</p>
+                          <p>{{ad.description | slice:0:20}}</p>
+                          <footer>Looking for
+                              <cite title="Source Title">this</cite>
+                              ?
+                          </footer>
+                          <div class="pull-right">
+                              <a [routerLink]="['/ads/details', ad._id ]" class="btn btn-info">Details</a>
+                              <span *ngIf="authService.isAdmin()"><a (click)="deleteAd(ad._id)" class="btn btn-danger"
+                                >Delete Item</a
+                              ></span>
+                            </div>
+                      </blockquote>
+                  </div>
+              </div>
+          </div>
+      </div>
+</div>
+

@@ -6,37 +6,50 @@
       <p></p>
     </div>
   </div>
-  <div *ngIf="(ads$ | async) as ads; else loading">
-    <div class="row space-top" *ngIf="ads.length != 0; else empty">
-      <div class="col-md-4" *ngFor="let ad of ads">
-        <div class="card text-white bg-primary">
-          <div class="card-body">
-            <blockquote class="card-blockquote">
-              <img src="{{ ad.image }}" />
-              <p></p>
+
+  <div *ngIf="(adsMy$ | async) as ads; else loading">
+    <div
+      class="product-content product-wrap clearfix"
+      *ngIf="ads.length != 0; else empty"
+    >
+      <div class="row" *ngFor="let ad of ads">
+        <div class="col-md-5 col-sm-12 col-xs-12">
+          <div class="product-image">
+            <img src="{{ ad.image }}" />
+          </div>
+        </div>
+        <div class="col-md-7 col-sm-12 col-xs-12">
+          <div class="product-deatil">
+            <h5 class="name">
               <p>{{ ad.title }}</p>
-              <p>{{ ad.description | slice:0:20}}</p>
-              <footer>
-                Looking for
-                <cite title="Source Title">this</cite>
-                ?
-              </footer>
-              <div class="pull-right">
+            </h5>
+            
+            <p class="price-container">
+                <span>$99</span>
+              </p>
+          </div>
+          <div class="description">
+            <p>{{ ad.description | slice: 0:20 }}</p>
+          </div>
+          <div class="product-info smart-form">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-6">
                 <a [routerLink]="['/ads/details', ad._id]" class="btn btn-info"
                   >Details</a
                 >
-                <a [routerLink]="['/ads/edit', ad._id]" class="btn btn-info"
-                >Edit</a
-              >
+                <a [routerLink]="['/ads/edit', ad._id]" class="btn btn-success"
+                  >Edit</a
+                >
                 <a (click)="deleteAd(ad._id)" class="btn btn-danger"
                   >Delete Item</a
                 >
               </div>
-            </blockquote>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
     <ng-template #empty>
       <div class="col-md-12">
         <h2>No ads</h2>

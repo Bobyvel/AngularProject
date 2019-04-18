@@ -15,7 +15,7 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     
   }
-  @Input() username: string;
+  
   
 
   logout() {

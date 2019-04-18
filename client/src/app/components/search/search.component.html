@@ -1,0 +1,16 @@
+<div class="search-container">
+  <form [formGroup]="searchForm" (submit)="search()">
+    <input
+      type="text"
+      name="query"
+      placeholder="search your item here"
+      formControlName="query"
+    />
+    <button type="submit" [disabled]="searchForm.invalid">Search</button>
+  </form>
+</div>
+
+<div *ngIf="results$ != null">
+  <h1>Results from your search</h1>
+  <app-common [ads$]="results$"></app-common>
+</div>

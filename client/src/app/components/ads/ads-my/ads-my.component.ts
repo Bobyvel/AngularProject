@@ -10,18 +10,19 @@ import { AdsService } from "src/app/core/services/ads.service";
   styleUrls: ["./ads-my.component.css"]
 })
 export class AdsMyComponent implements OnInit {
-  ads$: Observable<Ads[]>;
+  adsMy$: Observable<Ads[]>;
   constructor(private adsService: AdsService) {}
 
   ngOnInit() {
-    this.ads$ = this.adsService.getMyAds();
+    this.adsMy$ = this.adsService.getMyAds();
   }
-
   deleteAd(id) {
     console.log(id);
     this.adsService.removeAd(id).subscribe(data => {
-      console.log(data);
-      this.ads$ = this.adsService.getMyAds();
+     
+        this.adsMy$ = this.adsService.getMyAds();
+      
     });
   }
+  
 }

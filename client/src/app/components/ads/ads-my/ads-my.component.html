@@ -6,57 +6,29 @@
       <p></p>
     </div>
   </div>
+  <div class="ad" *ngIf="adsMy.length != 0; else empty">
+    <div class="media" *ngFor="let ad of adsMy">
+      <img src="{{ ad.image }}" class="align-self-start mr-3" />
+      <div class="media-body">
+        <h5 class="mt-0">{{ ad.title }}</h5>
+        <p>{{ ad.description | slice: 0:150 }}...</p>
+        <p class="mb-0">${{ ad.price }}</p>
+        <p></p>
 
-  <div *ngIf="(adsMy$ | async) as ads; else loading">
-    <div
-      class="product-content product-wrap clearfix"
-      *ngIf="ads.length != 0; else empty"
-    >
-      <div class="row" *ngFor="let ad of ads">
-        <div class="col-md-5 col-sm-12 col-xs-12">
-          <div class="product-image">
-            <img src="{{ ad.image }}" />
-          </div>
-        </div>
-        <div class="col-md-7 col-sm-12 col-xs-12">
-          <div class="product-deatil">
-            <h5 class="name">
-              <p>{{ ad.title }}</p>
-            </h5>
-            
-            <p class="price-container">
-                <span>$99</span>
-              </p>
-          </div>
-          <div class="description">
-            <p>{{ ad.description | slice: 0:20 }}</p>
-          </div>
-          <div class="product-info smart-form">
-            <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <a [routerLink]="['/ads/details', ad._id]" class="btn btn-info"
-                  >Details</a
-                >
-                <a [routerLink]="['/ads/edit', ad._id]" class="btn btn-success"
-                  >Edit</a
-                >
-                <a (click)="deleteAd(ad._id)" class="btn btn-danger"
-                  >Delete Item</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
+        <button [routerLink]="['/ads/details', ad._id]" class="btn btn-info"
+          >Details</button>
+        <button [routerLink]="['/ads/edit', ad._id]" class="btn btn-success">Edit</button>
+        <button (click)="deleteAd(ad._id)" class="btn btn-danger">Delete Item</button>
       </div>
     </div>
-
-    <ng-template #empty>
-      <div class="col-md-12">
-        <h2>No ads</h2>
-      </div>
-    </ng-template>
   </div>
-  <ng-template #loading>
-    <div class="col-md-12"><h2>Loading...</h2></div>
+
+  <ng-template #empty>
+    <div class="col-md-12">
+      <h2>No ads</h2>
+    </div>
   </ng-template>
 </div>
+<ng-template #loading>
+  <div class="col-md-12"><h2>Loading...</h2></div>
+</ng-template>

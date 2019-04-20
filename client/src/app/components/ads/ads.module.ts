@@ -11,7 +11,8 @@ import { AdsDetailsComponent } from './ads-details/ads-details.component';
 import { AdsEditComponent } from './ads-edit/ads-edit.component';
 import { AdsService } from 'src/app/core/services/ads.service';
 import { AdsRoutingModule } from './ads-routing.module';
-import { CommonComponent } from '../common/common.component';
+import { AdsDetailsResolver } from 'src/app/core/resolvers/ads-details.resolver';
+import { MyAdsResolver } from 'src/app/core/resolvers/ads-my.resolver';
 
 @NgModule({
   declarations: [
@@ -25,11 +26,13 @@ import { CommonComponent } from '../common/common.component';
     CommonModule,
     AdsRoutingModule,
     ReactiveFormsModule,
-    
+       
  
   ],
   providers: [ 
-  AdsService
+  AdsService,
+  AdsDetailsResolver,
+  MyAdsResolver
   ],
 })
 export class AdsModule { }

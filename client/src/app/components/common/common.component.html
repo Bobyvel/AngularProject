@@ -18,8 +18,8 @@
                 >Details</a
               >
               <span *ngIf="authService.isAdmin()"
-                ><a (click)="deleteAd(ad._id)" class="btn btn-danger"
-                  >Delete Item</a
+                ><button (click)="deleteAd(ad._id)" class="btn btn-danger"
+                  >Delete Item</button
                 ></span
               >
             </div>

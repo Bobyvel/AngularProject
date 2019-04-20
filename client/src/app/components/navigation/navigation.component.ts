@@ -21,7 +21,7 @@ export class NavigationComponent implements OnInit {
   logout() {
     this.authService.logout();
     localStorage.clear();
-    this.router.navigate(["/signin"]);
+    this.router.navigate(["auth/signin"]);
   }
 
   get user(){

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from 'src/app/components/authentication/signin/node_modules/@angular/core/testing';
 
 import { SigninComponent } from './signin.component';
 

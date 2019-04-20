@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Components
 import { HomeComponent } from './components/home/home.component';
-import { UsersComponent } from './components/users/users.component';
-import { SigninComponent } from './components/authentication/signin/signin.component';
-import { SignupComponent } from './components/authentication/signup/signup.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { AuthGuardAdmin } from './core/guards/auth.guardAdmin';
+import { UsersComponent } from './components/users/users.component';
+
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -15,11 +16,12 @@ const routes: Routes = [
     path: 'ads',
     loadChildren: './components/ads/ads.module#AdsModule', canActivate: [AuthGuard]
   },
-
-  { path: 'signin', component: SigninComponent },
-  { path: 'signup', component: SignupComponent },
-  
-  { path: 'users', component: UsersComponent}
+  {
+    path: 'auth',
+    loadChildren: './components/authentication/authentication.module#AuthenticationModule'
+  },
+    
+  { path: 'users', component: UsersComponent, canActivate: [AuthGuardAdmin]}
 ]
 
 @NgModule({

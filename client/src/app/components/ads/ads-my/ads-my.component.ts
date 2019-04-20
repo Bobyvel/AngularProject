@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { Ads } from "src/app/core/models/ads";
 import { AdsService } from "src/app/core/services/ads.service";
-
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-ads-my",
@@ -10,19 +10,16 @@ import { AdsService } from "src/app/core/services/ads.service";
   styleUrls: ["./ads-my.component.css"]
 })
 export class AdsMyComponent implements OnInit {
-  adsMy$: Observable<Ads[]>;
-  constructor(private adsService: AdsService) {}
+  adsMy: Array<Ads>;
+  constructor(private adsService: AdsService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.adsMy$ = this.adsService.getMyAds();
+    this.adsMy = this.route.snapshot.data["myAds"];
+    //this.adsMy$ = this.adsService.getMyAds();
   }
   deleteAd(id) {
-    console.log(id);
     this.adsService.removeAd(id).subscribe(data => {
-     
-        this.adsMy$ = this.adsService.getMyAds();
-      
+      //this.adsMy$ = this.adsService.getMyAds();
     });
   }
-  
 }

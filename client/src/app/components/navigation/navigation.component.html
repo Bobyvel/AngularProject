@@ -8,10 +8,10 @@
   <div class="navbar-collapse collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li *ngIf="!authService.isAuthenticated()" class="nav-item">
-        <a class="nav-link" routerLink="/signin">Sign In</a>
+        <a class="nav-link" routerLink="/auth/signin">Sign In</a>
       </li>
       <li *ngIf="!authService.isAuthenticated()" class="nav-item">
-        <a class="nav-link" routerLink="/signup">Sign Up</a>
+        <a class="nav-link" routerLink="/auth/signup">Sign Up</a>
       </li>
       <li *ngIf="authService.isAuthenticated()" class="nav-item">
         <a class="nav-link" (click)="logout()">Logout</a>

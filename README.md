@@ -40,9 +40,9 @@ $ ng serve
 - Anonymous users
     - Login/Register
     - View all ads
-    - View ads details
-
+    
 - Authenticated users
+    - View ads details
     - Create ads
     - Edit their ads
     - Delete their ads
